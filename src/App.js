@@ -1,23 +1,37 @@
-import logo from './logo.svg';
 import './App.css';
+import React, { useEffect, useState } from 'react';
+import { Route, Routes, useNavigate } from 'react-router-dom';
+import Login from './pages/Login';
+import Home from './pages/Home';
+import { supabase } from './supabase/supabase';
+import TOSmodals from './componentes/TOSModal';
 
 function App() {
+  const navigate = useNavigate();
+  const [modalOpen, setModalOpen] = useState(false);
+  useEffect(() => {
+    supabase.auth.onAuthStateChange((event,session)=> {
+      if (!session){
+        navigate('/login')
+      } else {
+        navigate('/')
+      }
+    })
+  }, [])
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      <Routes>
+        <Route index element = {<Home />} />
+        <Route path="/login" element = {<Login />} />
+      </Routes>
+      <bottom>
+        <button onClick={() => setModalOpen(true)}
         >
-          Learn React
-        </a>
-      </header>
+          Terminos y Servicios
+        </button>
+        {modalOpen && <TOSmodals setOpenModal={setModalOpen}/>}
+      </bottom>
     </div>
   );
 }
