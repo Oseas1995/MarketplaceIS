@@ -1,0 +1,55 @@
+.backModal{
+    size: 500px, 500px;
+
+
+}
+
+.container{
+    background-color: cadetblue;
+    padding: auto;
+    border-style: solid; 
+    border-radius: 20px
+}
+
+.XbotonContainer {
+    position: relative;
+    padding-right: 200cm;
+    margin-top: 1%;
+    margin-left: 2%;
+}
+
+.TosTitle{
+    margin-top: 1%;
+    margin-left: 1%;
+}
+
+.Tittles{
+    font-size: 28px;
+    margin-top: auto;
+    margin-left: 1%;
+}
+
+.body{
+    text-align: justify;
+    margin-top: auto;
+    margin-left: 15%;
+    margin-right: 15%;
+    margin-bottom: 1%;
+}
+.Xbtn{
+    background-color: #f83232;
+    size: 20px;
+    border-radius: 5px;
+    font-size: 18px; 
+}
+
+.footer{
+    margin-top: 12px;
+    margin-bottom: 1%;
+
+}
+
+.BtnAcept{
+    font-size: 18px; 
+    border-radius: 5px; 
+}
