@@ -1,4 +1,5 @@
 import React, {useState} from "react";
+import TOSmodal from "../componentes/TOSModal";
 import { supabase } from "../supabase/supabase";
 
 
@@ -6,6 +7,7 @@ function Login(){
 
 
     //Con Esto se Autentica el Correo del Usuario con un enlace
+    const [modalOpen, setModalOpen] = useState(false);
     const [email, setEmail] = useState("");  
     const [password, setPassword] = useState("");  
     const handleSignUp = async () => {
@@ -48,8 +50,9 @@ function Login(){
                     </div>
                 </div>                               
                 <button
-                    onClick={handleSignUp}
+                    onClick ={() => setModalOpen(true)}
                 >Send</button>
+                {modalOpen && <TOSmodal setOpenModal={setModalOpen}/>}
             </form>
         </div>
     );

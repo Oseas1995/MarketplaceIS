@@ -2,14 +2,15 @@ import './App.css';
 import React, { useEffect, useState } from 'react';
 import { Route, Routes, useNavigate } from 'react-router-dom';
 import Login from './pages/Login';
+import Register from './pages/Registrar/Register';
 import Home from './pages/Home';
 import NotFound from './pages/NotFound';
 import { supabase } from './supabase/supabase';
-import TOSmodals from './componentes/TOSModal';
+
 
 function App() {
   const navigate = useNavigate();
-  const [modalOpen, setModalOpen] = useState(false);
+
   useEffect(() => {
     supabase.auth.onAuthStateChange((event,session)=> {
       if (!session){
@@ -26,14 +27,8 @@ function App() {
         <Route index element = {<Home />} />
         <Route path="/login" element = {<Login />} />
         <Route path="*" element = {<NotFound />} />
+        <Route path="/register" element = {<Register />} />
       </Routes>
-      <bottom>
-        <button onClick={() => setModalOpen(true)}
-        >
-          Terminos y Servicios
-        </button>
-        {modalOpen && <TOSmodals setOpenModal={setModalOpen}/>}
-      </bottom>
     </div>
   );
 }
