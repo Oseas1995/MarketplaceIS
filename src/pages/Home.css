@@ -1,0 +1,51 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+
+}
+
+li{
+    text-decoration: none;
+    color: rgb(204, 227, 247);
+
+}
+
+.navbar-home{
+    background-color: rgb(54, 54, 248);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 10vh;
+    box-shadow: rgba(63, 63, 238, 0.37) 0 30px 30px -20px;
+
+}
+
+.nav-links{
+    display: flex;
+    justify-content: flex-end;
+    width: 75%;
+}
+
+
+.nav-links ul{
+    color: black;
+    font-size: 20px;
+    padding: 0 10px;
+    margin: 0 10px;
+    cursor: pointer;
+    text-transform: capitalize;
+    text-decoration: none;
+    
+
+}
+
+.nav-container{
+    max-width: 90%;
+    margin: auto;
+    padding-left: 50%;
+}
+
+.nav-btn{
+
+}

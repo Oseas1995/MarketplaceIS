@@ -25,6 +25,7 @@ function App() {
     <div className="App">
       <Routes>
         <Route index element = {<Home />} />
+        <Route path="/home" element = {<Home />} />
         <Route path="/login" element = {<Login />} />
         <Route path="*" element = {<NotFound />} />
         <Route path="/register" element = {<Register />} />
