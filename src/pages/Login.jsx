@@ -8,13 +8,13 @@ function Login(){
 
     //Con Esto se Autentica el Correo del Usuario con un enlace
     const [modalOpen, setModalOpen] = useState(false);
-    const [email, setEmail] = useState("");  
-    const [password, setPassword] = useState("");  
-    const handleSignUp = async () => {
+    const [mail, setEmail] = useState("");  
+    const [pass, setPassword] = useState("");  
+    const handlog = async () => {
         try{
             const {user, session, error} = await supabase.auth.signUp({
-                email,
-                password,
+                email: mail,
+                password:pass,
             })
                 if (error) throw error
 
@@ -28,7 +28,7 @@ function Login(){
     return(
         <div className="Background_Login">
             <header>Login</header>
-            <form>
+            <form onSubmit={e => e.preventDefault()}>
                 <div className="ContainerLogin">
                     <div>
                         <label style={{fontWeight: '700', marginRight: 5}}>Correo:</label>
@@ -36,6 +36,7 @@ function Login(){
                             type = "email"
                             name = "email"
                             placeholder = "ejemplo@site.com"
+                            value={mail}
                             onChange={(e)=>setEmail(e.target.value)}
                         />
                     </div>
@@ -45,11 +46,13 @@ function Login(){
                             type = "password"
                             name = "password"
                             placeholder = "contraseña"
+                            value={pass}
                             onChange={(e)=>setPassword(e.target.value)}
                         />
                     </div>
                 </div>                               
                 <button
+                    onClickCapture={handlog}
                     onClick ={() => setModalOpen(true)}
                 >Send</button>
                 {modalOpen && <TOSmodal setOpenModal={setModalOpen}/>}

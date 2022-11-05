@@ -3,16 +3,15 @@ import { Link } from "react-router-dom";
 import "./Home.css"
 function Home() {
     return (
-
         <nav className="navbar-home">
-            <div className="nav-container">
-                <h3 className="ass">Home is Here and it's nothing special</h3>
+            <h1 className="ass">Home is Here and it's nothing special</h1>
+            <div className="nav-container">                
                 <ul className="nav-links">
                     <Link to="/login">
-                        <ul>Log In</ul>
+                        <ul>Login</ul>
                     </Link>
                     <Link to="/register">
-                        <ul>Sign Up</ul>                       
+                        <ul>SignUp</ul>                       
                     </Link>
                 </ul>
             </div>

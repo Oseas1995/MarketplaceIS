@@ -25,9 +25,7 @@ function TOSmodals({setOpenModal}){
                     </div>
                 </div>  
             </div>
-        </form>
-
-          
+        </form>   
     );
 
 }
