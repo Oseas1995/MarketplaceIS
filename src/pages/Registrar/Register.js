@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Link } from "react-router-dom";
+import { supabase } from '../../supabase/supabase';
 import './Register.css'
 import RegisterInput from './RegisterInput';
 
@@ -9,7 +11,7 @@ const Registration = () => {
         flastname: "",
         slastname: "",
         email: "",
-        birthday: "",
+        telefono: "",
         password: "",
         confirmPassword: "",
     });
@@ -62,7 +64,7 @@ const Registration = () => {
         },
         {
             id: 6,
-            name: "Telefono",
+            name: "telefono",
             type: "text",
             placeholder: "Telefono",
             errorMessage: "Es Necesario un Numero de telefono",
@@ -92,8 +94,25 @@ const Registration = () => {
         },
     ];
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        try{
+            const user = supabase.auth.getUser();
+            const result = await supabase.from("usuario").insert({
+                primer_nombre: values.firstname,
+                segundo_nombre: values.secondname,
+                primer_apellido: values.flastname,
+                segundo_apellido: values.slastname,
+                corroe: user.email,
+                telefono: values.telefono,
+                id: user.id,
+                contraseña: user.password
+            })
+            console.log(result);
+        }catch (error){
+            console.error(error);
+
+        }
     };
 
     const onChange = (e) => {
@@ -102,7 +121,7 @@ const Registration = () => {
 
     return (
         <div className="app">
-            <form onSubmit={handleSubmit}>
+            <form>
                 <h1>Registro</h1>
                 {inputs.map((input) => (
                     <RegisterInput
@@ -112,8 +131,14 @@ const Registration = () => {
                         onChange={onChange}
                     />
                 ))}
-                <button>Submit</button>
+                <button onSubmit={handleSubmit}>Submit</button>
+                <div>
+                <Link to="/home">
+                    <ul>Back Home</ul>
+                </Link>
+            </div>
             </form>
+
         </div>
     );
 };
