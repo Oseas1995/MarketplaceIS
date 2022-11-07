@@ -1,41 +1,42 @@
-import './App.css';
-import React, { useEffect, useState } from 'react';
-import { Route, Routes, useNavigate } from 'react-router-dom';
-import Login from './pages/Login';
-import Home from './pages/Home';
-import NotFound from './pages/NotFound';
-import { supabase } from './supabase/supabase';
-import TOSmodals from './componentes/TOSModal';
+import logo from './logo.svg';
+
+import Header from './common/header/Header';
+import Footer from './common/footer/Footer';
+import {useState, useEff} from "react"
+
+
+
+import {BrowserRouter, Route, Routes} from "react-router-dom";
+import Login from './pages/login/Login';
+import Home from './pages/home/Home';
+
+
+
 
 function App() {
-  const navigate = useNavigate();
-  const [modalOpen, setModalOpen] = useState(false);
-  useEffect(() => {
-    supabase.auth.onAuthStateChange((event,session)=> {
-      if (!session){
-        navigate('/login')
-      } else {
-        navigate('/')
-      }
-    })
-  }, [])
-
   return (
-    <div className="App">
+    <>
+    <BrowserRouter>
+    <Header/>
       <Routes>
-        <Route index element = {<Home />} />
-        <Route path="/login" element = {<Login />} />
-        <Route path="*" element = {<NotFound />} />
+          <Route path = "/Login" element={<Login/>}/>  // una de las rutas donde quiero que vaya mi pagina
+          <Route path = "/Home" element={<Home/>}/> // una de las rutas donde quiero que vaya mi pagina
+
+          /*
+             el routes es para enlistar todas los links, como si fuera una lista
+             y el router es para meter el link especifico
+            comment 
+          */
+
+
+          
       </Routes>
-      <bottom>
-        <button onClick={() => setModalOpen(true)}
-        >
-          Terminos y Servicios
-        </button>
-        {modalOpen && <TOSmodals setOpenModal={setModalOpen}/>}
-      </bottom>
-    </div>
-  );
+    <Footer/>
+    </BrowserRouter>
+
+    </>
+  )
+
 }
 
 export default App;
