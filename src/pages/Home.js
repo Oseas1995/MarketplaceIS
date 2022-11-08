@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import React, {useEffect}from "react"
 import { Link, useNavigate } from "react-router-dom";
 import "./Home.css"
@@ -31,6 +32,32 @@ function Home() {
             </div>
         </nav>
     )
+=======
+import React from "react";
+import { Link } from "react-router-dom";
+
+function Home() {
+  return (
+    <div>
+      <nav class="navbar navbar-dark bg-primary">
+        <div class="container-fluid">
+          <a class="navbar-brand">E-Commerce </a>
+          <form class="d-flex" role="search">
+            <Link to="/login">
+              <button type="button" class="btn btn-secondary btn-sm">
+                Ingresar
+              </button>
+            </Link>
+
+            <button type="button" class="btn btn-secondary btn-sm">
+              Whish List
+            </button>
+          </form>
+        </div>
+      </nav>
+    </div>
+  );
+>>>>>>> 8411f4ca59a4e1732259c25431c54bd2bea4f2e6
 }
 
 export default Home;
